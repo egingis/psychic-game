@@ -16,8 +16,15 @@ document.onkeyup = function (event) {
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     //computer pulls a random letter out of the hat
     var compGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
-    //pushes user guess to patheticAttempts array
-    patheticAttempts.push(userGuess);
+
+    //denies player from guessing the same letter more than once
+    if (patheticAttempts.includes(userGuess)) {
+        alert("you already guessed this, try a different letter!")
+        return;
+    } else
+
+        //pushes user guess to patheticAttempts array
+        patheticAttempts.push(userGuess);
 
     //ends game and displays victory message if userGuess == compGuess
     if (userGuess == compGuess) {
